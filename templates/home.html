@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    {% for player in players_details %}
+        <div class=" col-xs-24 col-sm-12 col-md-6 col-lg-6 toppad" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ player.name }}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            {% if  player.player_img %}
+                                <img alt="User Pic" src="{% static player.player_img %}" class="img-circle img-responsive">
+                            {% else %}
+                            <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                            {% endif %}
+                        </div>
+                        <div class=" col-md-offset-3 col-lg-offset-3 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Nationality:</td>
+                                        <td>{{ player.nationality }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Club:</td>
+                                        <td>{{ player.club }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Age</td>
+                                        <td>{{ player.age }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Position</td>
+                                        <td>{{ player.preffered_position }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rating</td>
+                                        <td>{{ player.rating }}</td>
+                                    <tr>
+                                        <td>skill_moves</td>
+                                        <td>{{ player.skill_moves }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block pagination %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if players_details.has_previous %}
+                <a href="?page={{ players_details.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ players_details.number }} of {{ players_details.paginator.num_pages }}.
+            </span>
+            {% if players_details.has_next %}
+                <a href="?page={{ players_details.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}
