@@ -27,15 +27,14 @@
 </head>
 <body>
     <div class='main-class row'>
-        <div>
-            <p style="float: left; padding-left:5%">
-                <a href="{% url 'football:HomePage' %}"><img src="{% static 'football/img/logo.png' %}" height="60%" width="60%" border="1px"></a></a>
-            </p>
-            <p style="padding-top:1%">
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="{% url 'football:HomePage' %}"><img style="padding-left: 5%" src="{% static 'football/img/logo.png' %}" height="60%" width="60%" border="1px"></img></a>
+            </div>
+            <div class="col-xs-6">
                 <h3 style="color:#6EFF33">Football Players</h3>
                 <h3 style="color:#4DE4E4">Best Football Players Profiles</h3>
-            </p>
-
+            </div>
         </div>
     </div>
     <hr/>

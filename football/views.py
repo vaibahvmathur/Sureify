@@ -1,15 +1,4 @@
-import datetime
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response, render
-from django.http import HttpResponseRedirect, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-from django.contrib.auth import authenticate, login, logout
-from django.conf import settings
-from django.db import transaction
-import os
-import codecs
-import shutil
+from django.shortcuts import render
 from models import Footballers
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import os
@@ -24,7 +13,6 @@ def find(name, path):
 
 @csrf_exempt
 def HomePage(request):
-    sort_with = 0
     select = '0'
     players_list = {}
     if request.GET:
