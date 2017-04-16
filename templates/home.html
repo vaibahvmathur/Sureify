@@ -55,13 +55,13 @@
     <div class="pagination">
         <span class="step-links">
             {% if players_details.has_previous %}
-                <a href="?page={{ players_details.previous_page_number }}">previous</a>
+                <a href="?page={{ players_details.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">previous</a>
             {% endif %}
             <span class="current">
                 Page {{ players_details.number }} of {{ players_details.paginator.num_pages }}.
             </span>
             {% if players_details.has_next %}
-                <a href="?page={{ players_details.next_page_number }}">next</a>
+                <a href="?page={{ players_details.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">next</a>
             {% endif %}
         </span>
     </div>
